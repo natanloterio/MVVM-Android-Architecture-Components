@@ -5,13 +5,83 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView"
+    <ImageView
+        android:id="@+id/img_bulb"
+        android:src="@drawable/light_bulb"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_random_emoji"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+        android:id="@+id/btn_random_emoji"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="RANDOM EMOJI"
+        app:layout_constraintBottom_toTopOf="@+id/btn_emoji_list"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+        android:id="@+id/btn_emoji_list"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="RANDOM EMOJI"
+        app:layout_constraintTop_toTopOf="@+id/guideline_center_vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/guideline_center_vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <EditText
+        android:id="@+id/edt_github_username"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="RANDOM EMOJI"
+        app:layout_constraintTop_toBottomOf="@+id/btn_emoji_list"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageButton
+        android:id="@+id/btn_search_github_user"
+        android:src="@drawable/magnifier_glass"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:text="RANDOM EMOJI"
+        app:layout_constraintStart_toEndOf="@+id/edt_github_username"
+        app:layout_constraintTop_toTopOf="@+id/edt_github_username"/>
+
+
+    <Button
+        android:id="@+id/btn_avatar_list"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="RANDOM EMOJI"
+        app:layout_constraintTop_toBottomOf="@+id/edt_github_username"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+        android:id="@+id/btn_google_repos"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="RANDOM EMOJI"
+        app:layout_constraintTop_toBottomOf="@+id/btn_avatar_list"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_center_vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="338dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 </androidx.constraintlayout.widget.ConstraintLayout>
