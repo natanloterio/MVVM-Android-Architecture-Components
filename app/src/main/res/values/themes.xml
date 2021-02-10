@@ -1,0 +1,5 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="MainTheme" parent="Theme.AppCompat">
+
+    </style>
+</resources>
