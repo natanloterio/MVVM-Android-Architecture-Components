@@ -1,15 +1,18 @@
 package me.loterio.randomemoji.presentation
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.Observable
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
+import me.loterio.randomemoji.R
+import me.loterio.randomemoji.core.log
 import me.loterio.randomemoji.databinding.FragmentEmojiListBinding
 import me.loterio.randomemoji.model.Emoji
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -19,6 +22,7 @@ val fragmentModule = module {
     factory { FragmenEmojiList() }
 }
 class FragmenEmojiList: Fragment() {
+    private var shortAnimationDuration: Int = 0
     private val emojiListViewModel: EmojiListViewModel by viewModel()
     private lateinit var binding: FragmentEmojiListBinding
 
@@ -27,12 +31,15 @@ class FragmenEmojiList: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentEmojiListBinding.inflate(inflater,container,false)
+        binding  = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_emoji_list, container, false)
+        binding.lifecycleOwner = this
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.emojiListViewModel = emojiListViewModel
 
         emojiListViewModel.emojiList.observe(viewLifecycleOwner, Observer {
             setAdapter(it)

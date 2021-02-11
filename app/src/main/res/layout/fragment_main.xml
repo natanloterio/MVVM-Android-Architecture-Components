@@ -19,7 +19,7 @@
             android:id="@+id/btn_random_emoji"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="RANDOM EMOJI"
+            android:text="@string/random_emoji"
             app:layout_constraintBottom_toTopOf="@+id/btn_emoji_list"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -28,7 +28,7 @@
             android:id="@+id/btn_emoji_list"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="EMOJI LIST"
+            android:text="@string/emoji_list"
             app:layout_constraintBottom_toBottomOf="@+id/guideline_center_vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +38,9 @@
             android:id="@+id/edt_github_username"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:hint="insert github username"
+            android:hint="@string/insert_github_username"
+            android:ellipsize="start"
+            android:gravity="center_horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_emoji_list" />
@@ -48,7 +50,7 @@
             android:layout_width="42dp"
             android:layout_height="42dp"
             android:src="@android:drawable/ic_menu_search"
-            android:text="AVATAR LIST"
+            android:text="@string/avatar_list"
             app:layout_constraintStart_toEndOf="@+id/edt_github_username"
             app:layout_constraintTop_toTopOf="@+id/edt_github_username" />
 
@@ -57,7 +59,7 @@
             android:id="@+id/btn_avatar_list"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="GOOGLE REPOS"
+            android:text="@string/google_repos"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edt_github_username" />
@@ -66,7 +68,7 @@
             android:id="@+id/btn_google_repos"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="RANDOM EMOJI"
+            android:text="@string/random_emoji"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_avatar_list" />

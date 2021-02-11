@@ -21,7 +21,7 @@ class EmojiListViewModel(
     val emojiList = MutableLiveData<List<Emoji>>()
 
     fun getAllEmojis() {
-        showLoading.set(false)
+        showLoading.set(true)
         viewModelScope.launch {
             var result = emojisRepository.getAll()
 

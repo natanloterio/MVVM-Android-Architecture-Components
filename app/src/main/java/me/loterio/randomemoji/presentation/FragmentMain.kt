@@ -25,11 +25,36 @@ class FragmentMain: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val binding: FragmentMainBinding = FragmentMainBinding.bind(view)
 
+        binding.btnRandomEmoji.setOnClickListener {
+            val action =
+                FragmentMainDirections.actionFragmentMainToFragmentUnderConstruction()
+            view.findNavController().navigate(action)
+        }
+
         binding.btnEmojiList.setOnClickListener {
             val action =
                 FragmentMainDirections.actionFragmentMainToFragmenEmojiList()
             view.findNavController().navigate(action)
         }
+
+        binding.btnAvatarList.setOnClickListener {
+            val action =
+                FragmentMainDirections.actionFragmentMainToFragmentUnderConstruction()
+            view.findNavController().navigate(action)
+        }
+
+        binding.btnGoogleRepos.setOnClickListener {
+            val action =
+                FragmentMainDirections.actionFragmentMainToFragmentUnderConstruction()
+            view.findNavController().navigate(action)
+        }
+
+        binding.btnSearchGithubUser.setOnClickListener {
+            val action =
+                FragmentMainDirections.actionFragmentMainToFragmentUnderConstruction()
+            view.findNavController().navigate(action)
+        }
+
     }
 
 }
