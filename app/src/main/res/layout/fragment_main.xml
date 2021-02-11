@@ -28,7 +28,7 @@
             android:id="@+id/btn_emoji_list"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="RANDOM EMOJI"
+            android:text="EMOJI LIST"
             app:layout_constraintBottom_toBottomOf="@+id/guideline_center_vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +38,7 @@
             android:id="@+id/edt_github_username"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="RANDOM EMOJI"
+            android:hint="insert github username"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_emoji_list" />
@@ -47,8 +47,8 @@
             android:id="@+id/btn_search_github_user"
             android:layout_width="42dp"
             android:layout_height="42dp"
-            android:src="@drawable/magnifier_glass"
-            android:text="RANDOM EMOJI"
+            android:src="@android:drawable/ic_menu_search"
+            android:text="AVATAR LIST"
             app:layout_constraintStart_toEndOf="@+id/edt_github_username"
             app:layout_constraintTop_toTopOf="@+id/edt_github_username" />
 
@@ -57,7 +57,7 @@
             android:id="@+id/btn_avatar_list"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="RANDOM EMOJI"
+            android:text="GOOGLE REPOS"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edt_github_username" />
