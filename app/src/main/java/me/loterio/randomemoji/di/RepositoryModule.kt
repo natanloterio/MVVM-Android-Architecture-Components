@@ -1,13 +1,16 @@
 package me.loterio.randomemoji.di
 
+import dagger.Module
+import dagger.Provides
 import me.loterio.randomemoji.network.EmojiAPI
 import me.loterio.randomemoji.repository.EmojisRepository
-import org.koin.dsl.module
+
+@Module
+class RepositoryModule {
 
 
-val repositoryModule = module {
-    factory { provideEmojisRepository(get()) }
+    @Provides
+    fun provideEmojisRepository(emojiEmojiApi: EmojiAPI): EmojisRepository = EmojisRepository(emojiEmojiApi)
+
+
 }
-
-fun provideEmojisRepository(emojiEmojiApi: EmojiAPI): EmojisRepository = EmojisRepository(emojiEmojiApi)
-

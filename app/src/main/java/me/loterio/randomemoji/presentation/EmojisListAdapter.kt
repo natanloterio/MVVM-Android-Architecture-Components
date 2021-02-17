@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import me.loterio.randomemoji.databinding.EmojiListItemBinding
-import me.loterio.randomemoji.model.Emoji
+import me.loterio.randomemoji.domain.model.Emoji
 
 class EmojisListAdapter(
     val context: Context?,

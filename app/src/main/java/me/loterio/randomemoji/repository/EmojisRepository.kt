@@ -1,8 +1,6 @@
 package me.loterio.randomemoji.repository
 
-import android.accounts.NetworkErrorException
-import com.google.gson.Gson
-import me.loterio.randomemoji.model.Emoji
+import me.loterio.randomemoji.domain.model.Emoji
 import me.loterio.randomemoji.network.EmojiAPI
 import java.lang.Exception
 
