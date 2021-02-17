@@ -1,14 +1,12 @@
 package me.loterio.randomemoji.repository
 
 import me.loterio.randomemoji.domain.model.Emoji
-import me.loterio.randomemoji.network.EmojiAPI
-import java.lang.Exception
+import me.loterio.randomemoji.repository.contracts.EmojisRepository
+import me.loterio.randomemoji.repository.impl.network.EmojiAPIService
 
-class EmojisRepository(private val emojiEmojiApi: EmojiAPI) {
+class EmojisRepositoryImpl(private val emojiEmojiApi: EmojiAPIService): EmojisRepository{
 
-    suspend fun getAll() : RepositoryResonse<List<Emoji>> {
-        var emojisList: List<Pair<String,String>>
-
+    override suspend fun getAll() : RepositoryResonse<List<Emoji>> {
         try {
             return RepositoryResonse.Success(emojiEmojiApi.getAll())
         }catch (e: Exception){

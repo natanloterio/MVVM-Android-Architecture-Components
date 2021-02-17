@@ -1,4 +1,4 @@
-package me.loterio.randomemoji.network
+package me.loterio.randomemoji.repository.impl.network
 
 import com.google.gson.Gson
 import com.google.gson.JsonDeserializationContext
