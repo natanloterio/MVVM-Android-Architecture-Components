@@ -8,10 +8,9 @@ import kotlinx.coroutines.launch
 import me.loterio.randomemoji.domain.model.Emoji
 import me.loterio.randomemoji.repository.EmojisRepository
 import me.loterio.randomemoji.repository.RepositoryResonse
+import javax.inject.Inject
 
-class EmojiListViewModel(
-    private val emojisRepository: EmojisRepository
-) : ViewModel() {
+class EmojiListViewModel @Inject constructor(var emojisRepository: EmojisRepository) : ViewModel() {
 
     val showLoading = ObservableBoolean()
     val showError = MutableLiveData<String>()
