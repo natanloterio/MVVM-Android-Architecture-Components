@@ -1,10 +1,6 @@
 package me.loterio.randomemoji.network
 
-import me.loterio.randomemoji.model.Emoji
-import okhttp3.ResponseBody
-import org.json.JSONObject
-import retrofit2.Call
-import retrofit2.Response
+import me.loterio.randomemoji.domain.model.Emoji
 import retrofit2.http.GET
 
 interface EmojiAPI {

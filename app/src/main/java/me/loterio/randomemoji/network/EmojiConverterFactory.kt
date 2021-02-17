@@ -4,7 +4,7 @@ import com.google.gson.Gson
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement
-import me.loterio.randomemoji.model.Emoji
+import me.loterio.randomemoji.domain.model.Emoji
 import java.lang.Exception
 import java.lang.reflect.Type
 

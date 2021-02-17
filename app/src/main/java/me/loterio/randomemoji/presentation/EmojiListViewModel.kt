@@ -1,16 +1,13 @@
 package me.loterio.randomemoji.presentation
 
 import androidx.databinding.ObservableBoolean
-import androidx.lifecycle.*
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import me.loterio.randomemoji.model.Emoji
+import me.loterio.randomemoji.domain.model.Emoji
 import me.loterio.randomemoji.repository.EmojisRepository
 import me.loterio.randomemoji.repository.RepositoryResonse
-import org.koin.dsl.module
-
-val emojiListViewModel = module {
-    factory { EmojiListViewModel(get()) }
-}
 
 class EmojiListViewModel(
     private val emojisRepository: EmojisRepository

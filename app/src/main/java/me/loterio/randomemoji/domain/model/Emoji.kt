@@ -1,4 +1,4 @@
-package me.loterio.randomemoji.model
+package me.loterio.randomemoji.domain.model
 
 data class Emoji(
     val name: String,
