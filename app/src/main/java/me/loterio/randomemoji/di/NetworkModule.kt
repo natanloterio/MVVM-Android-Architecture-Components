@@ -19,16 +19,10 @@ class NetworkModule {
 
 
     @Provides
-    fun provideEmojiApi(retrofit: Retrofit): EmojiAPI = retrofit.create(
-        EmojiAPI::class.java)
-
-
-    @Provides
     fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient().newBuilder().build()
 
     }
-
 
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
@@ -42,7 +36,8 @@ class NetworkModule {
 
     }
 
-
-
+    @Provides
+    fun provideEmojiApi(retrofit: Retrofit): EmojiAPI = retrofit.create(
+            EmojiAPI::class.java)
 
 }

@@ -8,8 +8,11 @@ import javax.inject.Singleton
 @Component(modules = [
     AndroidCoreModule::class,
     NetworkModule::class,
-    RepositoryModule::class])
+    RepositoryModule::class,
+    ViewModelsModule::class
+])
 interface AppComponent {
 
     fun inject(fragment: FragmenEmojiList)
+
 }

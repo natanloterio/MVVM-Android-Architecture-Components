@@ -8,9 +8,9 @@ import me.loterio.randomemoji.repository.EmojisRepository
 @Module
 class RepositoryModule {
 
-
     @Provides
-    fun provideEmojisRepository(emojiEmojiApi: EmojiAPI): EmojisRepository = EmojisRepository(emojiEmojiApi)
-
+    fun provideEmojisRepository(emojiEmojiApi: EmojiAPI): EmojisRepository {
+       return  EmojisRepository(emojiEmojiApi)
+    }
 
 }

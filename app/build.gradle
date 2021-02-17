@@ -76,10 +76,6 @@ dependencies {
 
 
     //Dependency injection
-    // Koin
-    implementation 'org.koin:koin-android:2.0.0-rc-2'
-    implementation 'org.koin:koin-android-viewmodel:2.0.0-rc-2'
-    implementation 'org.koin:koin-androidx-scope:2.0.0-rc-2'
     // Dagger
     implementation "com.google.dagger:dagger:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
