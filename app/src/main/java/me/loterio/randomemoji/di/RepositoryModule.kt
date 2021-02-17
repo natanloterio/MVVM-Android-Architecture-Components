@@ -2,15 +2,15 @@ package me.loterio.randomemoji.di
 
 import dagger.Module
 import dagger.Provides
-import me.loterio.randomemoji.network.EmojiAPI
-import me.loterio.randomemoji.repository.EmojisRepository
+import me.loterio.randomemoji.repository.impl.network.EmojiAPIService
+import me.loterio.randomemoji.repository.EmojisRepositoryImpl
 
 @Module
 class RepositoryModule {
 
     @Provides
-    fun provideEmojisRepository(emojiEmojiApi: EmojiAPI): EmojisRepository {
-       return  EmojisRepository(emojiEmojiApi)
+    fun provideEmojisRepository(emojiEmojiApi: EmojiAPIService): EmojisRepositoryImpl {
+       return  EmojisRepositoryImpl(emojiEmojiApi)
     }
 
 }

@@ -6,13 +6,12 @@ import dagger.Module
 import dagger.Provides
 import me.loterio.randomemoji.BuildConfig
 import me.loterio.randomemoji.domain.model.Emoji
-import me.loterio.randomemoji.network.EmojiAPI
-import me.loterio.randomemoji.network.EmojiConverterFactory
+import me.loterio.randomemoji.repository.impl.network.EmojiAPIService
+import me.loterio.randomemoji.repository.impl.network.EmojiConverterFactory
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.lang.reflect.Type
-import javax.inject.Singleton
 
 @Module
 class NetworkModule {
@@ -37,7 +36,7 @@ class NetworkModule {
     }
 
     @Provides
-    fun provideEmojiApi(retrofit: Retrofit): EmojiAPI = retrofit.create(
-            EmojiAPI::class.java)
+    fun provideEmojiApi(retrofit: Retrofit): EmojiAPIService = retrofit.create(
+            EmojiAPIService::class.java)
 
 }
