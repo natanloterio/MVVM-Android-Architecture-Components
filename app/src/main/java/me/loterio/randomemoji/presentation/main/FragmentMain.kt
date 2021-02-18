@@ -62,9 +62,7 @@ class FragmentMain: Fragment() {
         }
 
         binding.btnSearchGithubUser.setOnClickListener {
-            val action =
-                FragmentMainDirections.actionFragmentMainToFragmentUnderConstruction()
-            view.findNavController().navigate(action)
+           mainViewModel.searchGithubUser(binding.edtGithubUsername.text.toString())
         }
 
         mainViewModel.randomEmoji.observe(viewLifecycleOwner, Observer {

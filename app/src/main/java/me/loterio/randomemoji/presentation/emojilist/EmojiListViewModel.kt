@@ -11,10 +11,11 @@ import kotlinx.coroutines.launch
 import me.loterio.randomemoji.domain.model.Emoji
 import me.loterio.randomemoji.repository.EmojisRepositoryImpl
 import me.loterio.randomemoji.repository.RepositoryResonse
+import me.loterio.randomemoji.repository.contracts.EmojisRepository
 import okhttp3.internal.wait
 import javax.inject.Inject
 
-class EmojiListViewModel @Inject constructor(var emojisRepository: EmojisRepositoryImpl) :
+class EmojiListViewModel @Inject constructor(var emojisRepository: EmojisRepository) :
     ViewModel() {
 
     val showLoading = ObservableBoolean()

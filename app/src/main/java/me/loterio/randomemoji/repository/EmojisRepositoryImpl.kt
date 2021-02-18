@@ -3,11 +3,11 @@ package me.loterio.randomemoji.repository
 import me.loterio.randomemoji.domain.model.Emoji
 import me.loterio.randomemoji.repository.contracts.EmojisRepository
 import me.loterio.randomemoji.repository.impl.db.dao.EmojiDao
-import me.loterio.randomemoji.repository.impl.db.uil.domainToDB
-import me.loterio.randomemoji.repository.impl.network.EmojiAPIService
+import me.loterio.randomemoji.repository.impl.db.uil.emojiDomainToDB
+import me.loterio.randomemoji.repository.impl.network.GithubApiService
 
 class EmojisRepositoryImpl(
-    var emojiEmojiApi: EmojiAPIService,
+    var apiService: GithubApiService,
     var emojiDao: EmojiDao
 ): EmojisRepository{
 
@@ -27,7 +27,7 @@ class EmojisRepositoryImpl(
         }
     }
 
-    private suspend fun getEmojisRemotelly() = emojiEmojiApi.getAll()
+    private suspend fun getEmojisRemotelly() = apiService.getAllEmojis()
 
     private fun hasCachedData(): Boolean {
         var first = emojiDao.getFirst()
@@ -35,7 +35,7 @@ class EmojisRepositoryImpl(
     }
 
     private fun saveEmojisLocally(all: List<Emoji>): List<Emoji> {
-        emojiDao.insertAll(domainToDB(all))
+        emojiDao.insertAll(emojiDomainToDB(all))
         return all
     }
 
