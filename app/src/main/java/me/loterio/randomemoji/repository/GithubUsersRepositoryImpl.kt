@@ -1,5 +1,6 @@
 package me.loterio.randomemoji.repository
 
+import me.loterio.randomemoji.domain.model.Emoji
 import me.loterio.randomemoji.domain.model.GithubUser
 import me.loterio.randomemoji.repository.contracts.GithubUsersRepository
 import me.loterio.randomemoji.repository.impl.db.dao.EmojiDao
@@ -12,6 +13,18 @@ class GithubUsersRepositoryImpl(
         var apiService: GithubApiService,
         var githubUsersDao: GithubUsersDao
 ): GithubUsersRepository{
+
+    override suspend fun getAll() : RepositoryResonse<List<GithubUser>> {
+        return try {
+            RepositoryResonse.Success(getUsersLocally())
+        }catch (e: Exception){
+            e.printStackTrace()
+            RepositoryResonse.Error(
+                exception = e,
+                message = "Error while retrieving data"
+            )
+        }
+    }
 
     override suspend fun searchGithubUser(username: String): RepositoryResonse<GithubUser> {
         return try {
@@ -36,8 +49,17 @@ class GithubUsersRepositoryImpl(
                     message = "Error while retrieving data"
             )
         }
-
     }
+
+    private fun getUsersLocally(): List<GithubUser> {
+        return githubUsersDao.getAll().map {
+            GithubUser(
+                login = it.login,
+                id = it.id,
+                avatar_url = it.avatarUrl)
+        }
+    }
+
 
 
 }
