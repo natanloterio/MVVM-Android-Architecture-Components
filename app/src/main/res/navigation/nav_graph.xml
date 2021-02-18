@@ -4,7 +4,7 @@
     app:startDestination="@id/fragmentMain">
     <fragment
         android:id="@+id/fragmentMain"
-        android:name="me.loterio.randomemoji.presentation.FragmentMain"
+        android:name="me.loterio.randomemoji.presentation.main.FragmentMain"
         android:label="FragmentMain" >
         <action
             android:id="@+id/action_fragmentMain_to_fragmenEmojiList"
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmenEmojiList"
-        android:name="me.loterio.randomemoji.presentation.FragmenEmojiList"
+        android:name="me.loterio.randomemoji.presentation.emojilist.FragmenEmojiList"
         android:label="FragmenEmojiList" />
     <fragment
         android:id="@+id/fragmentUnderConstruction"

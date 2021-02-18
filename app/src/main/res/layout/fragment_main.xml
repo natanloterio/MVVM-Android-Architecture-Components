@@ -7,7 +7,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/img_bulb"
+            android:id="@+id/iv_random_emoji"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:src="@drawable/light_bulb"

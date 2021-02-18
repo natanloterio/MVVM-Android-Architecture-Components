@@ -1,4 +1,4 @@
-package me.loterio.randomemoji.presentation
+package me.loterio.randomemoji.presentation.emojilist
 
 import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.MutableLiveData

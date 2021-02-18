@@ -1,4 +1,4 @@
-package me.loterio.randomemoji.presentation
+package me.loterio.randomemoji.presentation.emojilist
 
 import android.content.Context
 import android.os.Bundle
@@ -12,12 +12,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import me.loterio.randomemoji.EmojisApplication
 import me.loterio.randomemoji.R
 import me.loterio.randomemoji.databinding.FragmentEmojiListBinding
-import me.loterio.randomemoji.di.DaggerAppComponent
 import me.loterio.randomemoji.domain.model.Emoji
 import javax.inject.Inject
 
 class FragmenEmojiList: Fragment() {
-    private var shortAnimationDuration: Int = 0
 
     @Inject
     lateinit var emojiListViewModel: EmojiListViewModel
@@ -28,7 +26,7 @@ class FragmenEmojiList: Fragment() {
         super.onAttach(context)
         (requireActivity().applicationContext as EmojisApplication)
             .appComponent
-            .inject(this)
+            .injectFragmentEmojiList(this)
     }
 
     override fun onCreateView(
@@ -58,7 +56,11 @@ class FragmenEmojiList: Fragment() {
 
     private fun setAdapter(emojiList: List<Emoji>) {
         binding.rvEmojiList.apply {
-            adapter = EmojisListAdapter(context, emojiList)
+            adapter =
+                EmojisListAdapter(
+                    context,
+                    emojiList
+                )
             layoutManager = GridLayoutManager(activity, 4, GridLayoutManager.VERTICAL, false)
             isNestedScrollingEnabled = false
         }

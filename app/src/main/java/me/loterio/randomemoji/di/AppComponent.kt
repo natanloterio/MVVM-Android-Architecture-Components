@@ -1,7 +1,8 @@
 package me.loterio.randomemoji.di
 
 import dagger.Component
-import me.loterio.randomemoji.presentation.FragmenEmojiList
+import me.loterio.randomemoji.presentation.emojilist.FragmenEmojiList
+import me.loterio.randomemoji.presentation.main.FragmentMain
 import javax.inject.Singleton
 
 @Singleton
@@ -13,6 +14,7 @@ import javax.inject.Singleton
 ])
 interface AppComponent {
 
-    fun inject(fragment: FragmenEmojiList)
+    fun injectFragmentMain(fragment: FragmentMain)
+    fun injectFragmentEmojiList(fragment: FragmenEmojiList)
 
 }
