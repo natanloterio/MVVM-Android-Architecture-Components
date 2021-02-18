@@ -12,8 +12,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import me.loterio.randomemoji.EmojisApplication
 import me.loterio.randomemoji.R
 import me.loterio.randomemoji.databinding.FragmentAvatarListBinding
-import me.loterio.randomemoji.domain.model.Emoji
+import me.loterio.randomemoji.domain.model.GithubRepo
 import me.loterio.randomemoji.domain.model.GithubUser
+import me.loterio.randomemoji.presentation.googlerepos.GoogleReposListAdapter
 import javax.inject.Inject
 
 class FragmentAvatarList: Fragment() {
