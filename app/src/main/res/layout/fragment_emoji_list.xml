@@ -5,7 +5,7 @@
         <import type="android.view.View"/>
         <variable
             name="emojiListViewModel"
-            type="me.loterio.randomemoji.presentation.EmojiListViewModel" />
+            type="me.loterio.randomemoji.presentation.emojilist.EmojiListViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

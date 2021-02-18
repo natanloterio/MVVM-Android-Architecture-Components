@@ -1,4 +1,4 @@
-package me.loterio.randomemoji.presentation
+package me.loterio.randomemoji.presentation.main
 
 import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.MutableLiveData
@@ -10,13 +10,14 @@ import me.loterio.randomemoji.repository.EmojisRepositoryImpl
 import me.loterio.randomemoji.repository.RepositoryResonse
 import javax.inject.Inject
 
-class EmojiListViewModel @Inject constructor(var emojisRepository: EmojisRepositoryImpl) : ViewModel() {
+class MainViewModel @Inject constructor(var emojisRepository: EmojisRepositoryImpl) : ViewModel() {
 
     val showLoading = ObservableBoolean()
     val showError = MutableLiveData<String>()
-    val emojiList = MutableLiveData<List<Emoji>>()
+    val randomEmoji = MutableLiveData<Emoji>()
 
-    fun getAllEmojis() {
+
+    fun showRandomEmoji() {
         showLoading.set(true)
         viewModelScope.launch {
             var result = emojisRepository.getAll()
@@ -24,7 +25,7 @@ class EmojiListViewModel @Inject constructor(var emojisRepository: EmojisReposit
             showLoading.set(false)
             when(result){
                 is RepositoryResonse.Success -> {
-                    emojiList.value = result.successData
+                    randomEmoji.value = result.successData.random()
                     showError.value = null
                 }
                 is RepositoryResonse.Error -> showError.value = result.exception.message
