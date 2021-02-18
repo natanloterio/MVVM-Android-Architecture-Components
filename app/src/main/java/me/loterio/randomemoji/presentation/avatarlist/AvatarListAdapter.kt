@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import me.loterio.randomemoji.databinding.AvatarListItemBinding
+import me.loterio.randomemoji.domain.model.GithubRepo
 import me.loterio.randomemoji.domain.model.GithubUser
 
 class AvatarListAdapter(

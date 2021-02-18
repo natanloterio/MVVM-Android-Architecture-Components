@@ -57,7 +57,7 @@ class FragmentMain: Fragment() {
 
         binding.btnGoogleRepos.setOnClickListener {
             val action =
-                FragmentMainDirections.actionFragmentMainToFragmentUnderConstruction()
+                FragmentMainDirections.actionFragmentMainToFragmentGoogleReposList()
             view.findNavController().navigate(action)
         }
 
