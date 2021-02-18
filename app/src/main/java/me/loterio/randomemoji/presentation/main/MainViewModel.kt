@@ -4,6 +4,7 @@ import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import me.loterio.randomemoji.domain.model.Emoji
 import me.loterio.randomemoji.repository.EmojisRepositoryImpl
@@ -19,17 +20,20 @@ class MainViewModel @Inject constructor(var emojisRepository: EmojisRepositoryIm
 
     fun showRandomEmoji() {
         showLoading.set(true)
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             var result = emojisRepository.getAll()
 
-            showLoading.set(false)
-            when(result){
-                is RepositoryResonse.Success -> {
-                    randomEmoji.value = result.successData.random()
-                    showError.value = null
+            viewModelScope.launch {
+                showLoading.set(false)
+                when (result) {
+                    is RepositoryResonse.Success -> {
+                        randomEmoji.value = result.successData.random()
+                        showError.value = null
+                    }
+                    is RepositoryResonse.Error -> showError.value = result.exception.message
                 }
-                is RepositoryResonse.Error -> showError.value = result.exception.message
             }
+
         }
     }
 }
