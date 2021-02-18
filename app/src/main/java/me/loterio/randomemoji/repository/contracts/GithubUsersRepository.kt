@@ -6,5 +6,6 @@ import me.loterio.randomemoji.repository.RepositoryResonse
 
 interface GithubUsersRepository {
 
+    suspend fun getAll(): RepositoryResonse<List<GithubUser>>
     suspend fun searchGithubUser(username: String) : RepositoryResonse<GithubUser>
 }

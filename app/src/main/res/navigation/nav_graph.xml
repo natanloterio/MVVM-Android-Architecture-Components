@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_fragmentMain_to_fragmentUnderConstruction"
             app:destination="@id/fragmentUnderConstruction" />
+        <action
+            android:id="@+id/action_fragmentMain_to_fragmentAvatarList"
+            app:destination="@id/fragmentAvatarList" />
     </fragment>
     <fragment
         android:id="@+id/fragmenEmojiList"
@@ -21,4 +24,8 @@
         android:id="@+id/fragmentUnderConstruction"
         android:name="me.loterio.randomemoji.presentation.FragmentUnderConstruction"
         android:label="FragmentUnderConstruction" />
+    <fragment
+        android:id="@+id/fragmentAvatarList"
+        android:name="me.loterio.randomemoji.presentation.avatarlist.FragmentAvatarList"
+        android:label="FragmentAvatarList" />
 </navigation>
