@@ -47,10 +47,18 @@ class FragmenEmojiList: Fragment() {
         binding.emojiListViewModel = emojiListViewModel
 
         emojiListViewModel.emojiList.observe(viewLifecycleOwner, Observer {
+
             setAdapter(it)
         })
 
         emojiListViewModel.getAllEmojis()
+
+        binding.swipeRefresh.apply {
+            setOnRefreshListener {
+                isRefreshing = false;
+                emojiListViewModel.resetCache()
+            }
+        }
 
     }
 

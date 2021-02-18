@@ -47,4 +47,9 @@ class EmojisRepositoryImpl(
         }
     }
 
+    override fun resetCache() {
+        emojiDao.deleteAll()
+    }
+
+
 }

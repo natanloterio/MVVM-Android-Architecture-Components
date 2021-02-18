@@ -100,8 +100,9 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.2.0'
 
     //recyclerview and cardview
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
+    implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$recyclerview_version"
 
     //navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
