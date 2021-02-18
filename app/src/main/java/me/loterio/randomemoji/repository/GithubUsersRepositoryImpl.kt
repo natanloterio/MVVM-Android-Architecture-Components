@@ -6,8 +6,8 @@ import me.loterio.randomemoji.repository.impl.db.dao.EmojiDao
 import me.loterio.randomemoji.repository.impl.db.uil.domainToDB
 import me.loterio.randomemoji.repository.impl.network.GithubApiService
 
-class EmojisRepositoryImpl(
-        var emojiEmojiApi: GithubApiService,
+class GithubUsersRepositoryImpl(
+        var apiService: GithubApiService,
         var emojiDao: EmojiDao
 ): EmojisRepository{
 
@@ -27,7 +27,7 @@ class EmojisRepositoryImpl(
         }
     }
 
-    private suspend fun getEmojisRemotelly() = emojiEmojiApi.getAllEmojis()
+    private suspend fun getEmojisRemotelly() = apiService.getAllEmojis()
 
     private fun hasCachedData(): Boolean {
         var first = emojiDao.getFirst()

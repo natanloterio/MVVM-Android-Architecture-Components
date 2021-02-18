@@ -4,10 +4,11 @@ import android.content.Context
 import androidx.room.Room
 import dagger.Module
 import dagger.Provides
-import me.loterio.randomemoji.repository.impl.network.EmojiAPIService
 import me.loterio.randomemoji.repository.EmojisRepositoryImpl
 import me.loterio.randomemoji.repository.impl.db.AppRoomDatabase
+import me.loterio.randomemoji.repository.impl.db.MIGRATION_1_2
 import me.loterio.randomemoji.repository.impl.db.dao.EmojiDao
+import me.loterio.randomemoji.repository.impl.network.GithubApiService
 
 @Module
 class RepositoryModule {
@@ -17,7 +18,8 @@ class RepositoryModule {
         return Room.databaseBuilder(
             applicationContext,
             AppRoomDatabase::class.java, "database-test"
-        ).build()
+        ).addMigrations(MIGRATION_1_2)
+            .build()
     }
 
     @Provides
@@ -27,8 +29,8 @@ class RepositoryModule {
 
     @Provides
     fun provideEmojisRepository(
-        emojiEmojiApi: EmojiAPIService,
-        emojiDao: EmojiDao): EmojisRepositoryImpl {
+            emojiEmojiApi: GithubApiService,
+            emojiDao: EmojiDao): EmojisRepositoryImpl {
        return  EmojisRepositoryImpl(emojiEmojiApi,emojiDao)
     }
 

@@ -6,7 +6,7 @@ import dagger.Module
 import dagger.Provides
 import me.loterio.randomemoji.BuildConfig
 import me.loterio.randomemoji.domain.model.Emoji
-import me.loterio.randomemoji.repository.impl.network.EmojiAPIService
+import me.loterio.randomemoji.repository.impl.network.GithubApiService
 import me.loterio.randomemoji.repository.impl.network.EmojiConverterFactory
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -36,7 +36,7 @@ class NetworkModule {
     }
 
     @Provides
-    fun provideEmojiApi(retrofit: Retrofit): EmojiAPIService = retrofit.create(
-            EmojiAPIService::class.java)
+    fun provideEmojiApi(retrofit: Retrofit): GithubApiService = retrofit.create(
+            GithubApiService::class.java)
 
 }
