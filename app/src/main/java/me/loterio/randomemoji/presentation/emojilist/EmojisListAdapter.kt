@@ -1,4 +1,4 @@
-package me.loterio.randomemoji.presentation
+package me.loterio.randomemoji.presentation.emojilist
 
 import android.content.Context
 import android.view.LayoutInflater
