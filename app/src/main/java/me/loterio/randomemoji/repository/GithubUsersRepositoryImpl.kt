@@ -1,54 +1,42 @@
 package me.loterio.randomemoji.repository
 
-import me.loterio.randomemoji.domain.model.Emoji
-import me.loterio.randomemoji.repository.contracts.EmojisRepository
+import me.loterio.randomemoji.domain.model.GithubUser
+import me.loterio.randomemoji.repository.contracts.GithubUsersRepository
 import me.loterio.randomemoji.repository.impl.db.dao.EmojiDao
-import me.loterio.randomemoji.repository.impl.db.uil.domainToDB
+import me.loterio.randomemoji.repository.impl.db.dao.GithubUsersDao
+import me.loterio.randomemoji.repository.impl.db.model.GithubUserDB
+import me.loterio.randomemoji.repository.impl.db.uil.userDomainToDb
 import me.loterio.randomemoji.repository.impl.network.GithubApiService
 
 class GithubUsersRepositoryImpl(
         var apiService: GithubApiService,
-        var emojiDao: EmojiDao
-): EmojisRepository{
+        var githubUsersDao: GithubUsersDao
+): GithubUsersRepository{
 
-    override suspend fun getAll() : RepositoryResonse<List<Emoji>> {
+    override suspend fun searchGithubUser(username: String): RepositoryResonse<GithubUser> {
         return try {
-            if(hasCachedData()){
-                RepositoryResonse.Success(getEmojisLocally())
-            }else {
-                RepositoryResonse.Success(saveEmojisLocally(getEmojisRemotelly()))
+            val cachedUser: GithubUserDB = githubUsersDao.findByName(username)
+            if(cachedUser != null){
+                RepositoryResonse.Success(GithubUser(
+                        login = cachedUser.login,
+                        id = cachedUser.id,
+                        avatar_url = cachedUser.avatarUrl
+                ))
+            }else{
+
+                val user = apiService.searchGithubUser(username = username)
+                githubUsersDao.insert(userDomainToDb(user))
+
+                RepositoryResonse.Success(user)
             }
         }catch (e: Exception){
             e.printStackTrace()
             RepositoryResonse.Error(
-                exception = e,
-                message = "Error while retrieving data"
+                    exception = e,
+                    message = "Error while retrieving data"
             )
         }
-    }
 
-    private suspend fun getEmojisRemotelly() = apiService.getAllEmojis()
-
-    private fun hasCachedData(): Boolean {
-        var first = emojiDao.getFirst()
-        return first != null
-    }
-
-    private fun saveEmojisLocally(all: List<Emoji>): List<Emoji> {
-        emojiDao.insertAll(domainToDB(all))
-        return all
-    }
-
-    private fun getEmojisLocally(): List<Emoji> {
-        return emojiDao.getAll().map {
-            Emoji(
-                name = it.name,
-                url = it.url)
-        }
-    }
-
-    override fun resetCache() {
-        emojiDao.deleteAll()
     }
 
 
