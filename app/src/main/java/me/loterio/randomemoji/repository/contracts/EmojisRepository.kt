@@ -6,4 +6,5 @@ import me.loterio.randomemoji.repository.RepositoryResonse
 interface EmojisRepository {
 
     suspend fun getAll() : RepositoryResonse<List<Emoji>>
+    fun resetCache()
 }
