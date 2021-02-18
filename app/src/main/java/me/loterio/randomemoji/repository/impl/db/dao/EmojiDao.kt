@@ -24,8 +24,8 @@ interface EmojiDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(emojis: List<EmojiDB?>?)
 
-    @Delete
-    fun delete(emoji: EmojiDB)
+    @Query("DELETE FROM emoji")
+    fun deleteAll()
 
     @Query("SELECT * FROM emoji WHERE name LIKE :name LIMIT 1")
     fun findByName(name: String): EmojiDB
