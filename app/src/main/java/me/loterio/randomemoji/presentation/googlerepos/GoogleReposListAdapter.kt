@@ -3,14 +3,13 @@ package me.loterio.randomemoji.presentation.googlerepos
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import me.loterio.randomemoji.databinding.GoogleRepoListItemBinding
 import me.loterio.randomemoji.domain.model.GithubRepo
 
-class GoogleReposListAdapter(
-    private val context: Context?,
-    private val githubRepos: List<GithubRepo>
-) : RecyclerView.Adapter<GoogleReposListAdapter.GoogleReposViewHolder>() {
+class GoogleReposListAdapter() :  PagingDataAdapter<GithubRepo, GoogleReposListAdapter.GoogleReposViewHolder>(DiffUtilCallBack()) {
 
     inner class GoogleReposViewHolder(val viewBiding: GoogleRepoListItemBinding) :
 
@@ -28,13 +27,19 @@ class GoogleReposListAdapter(
         return GoogleReposViewHolder(viewBinding)
     }
 
-    override fun getItemCount(): Int {
-        return githubRepos.size
-    }
-
     override fun onBindViewHolder(holder: GoogleReposViewHolder, position: Int) {
-        holder.onBind(githubRepos[position])
+        getItem(position)?.let {
+            holder.onBind(it)
+        }
     }
 
+    class DiffUtilCallBack : DiffUtil.ItemCallback<GithubRepo>() {
+        override fun areItemsTheSame(oldItem: GithubRepo, newItem: GithubRepo): Boolean {
+            return oldItem.id == newItem.id
+        }
 
+        override fun areContentsTheSame(oldItem: GithubRepo, newItem: GithubRepo): Boolean {
+            return oldItem == newItem
+        }
+    }
 }

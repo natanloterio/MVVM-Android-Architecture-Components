@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.coroutines.flow.collectLatest
 import me.loterio.randomemoji.EmojisApplication
 import me.loterio.randomemoji.R
 import me.loterio.randomemoji.databinding.FragmentGoogleReposBinding
@@ -18,8 +20,10 @@ import javax.inject.Inject
 
 class FragmentGoogleReposList: Fragment() {
 
+    private lateinit var adapter: GoogleReposListAdapter
+
     @Inject
-    lateinit var googleRepositoryListViewModel: GoogleReposListViewModel
+    lateinit var viewModel: GoogleReposListViewModel
 
     private lateinit var binding: FragmentGoogleReposBinding
 
@@ -45,25 +49,33 @@ class FragmentGoogleReposList: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+//
+//        viewModel.reposList.observe(viewLifecycleOwner, Observer {
+//            setAdapter(it)
+//        })
+        adapter = GoogleReposListAdapter()
+        binding.rvGoogleRepos.adapter = adapter
+        binding.rvGoogleRepos.layoutManager = LinearLayoutManager(activity,  GridLayoutManager.VERTICAL, false)
 
-        googleRepositoryListViewModel.reposList.observe(viewLifecycleOwner, Observer {
-            setAdapter(it)
-        })
-
-        googleRepositoryListViewModel.getAllGoogleRepos()
-
-
-    }
-
-    private fun setAdapter(githubRepos: List<GithubRepo>) {
-        binding.rvGoogleRepos.apply {
-            adapter =
-                GoogleReposListAdapter(
-                    context,
-                    githubRepos
-                )
-            layoutManager = LinearLayoutManager(activity,  GridLayoutManager.VERTICAL, false)
-            isNestedScrollingEnabled = false
+        lifecycleScope.launchWhenCreated {
+            viewModel.getAllGoogleReposPaged().collectLatest {
+                adapter.submitData(it)
+            }
         }
     }
+
+
+
+
+//    private fun setAdapter(githubRepos: List<GithubRepo>) {
+//        binding.rvGoogleRepos.apply {
+//            adapter =
+//                GoogleReposListAdapter(
+//                    context,
+//                    githubRepos
+//                )
+//            layoutManager = LinearLayoutManager(activity,  GridLayoutManager.VERTICAL, false)
+//            isNestedScrollingEnabled = false
+//        }
+//    }
 }

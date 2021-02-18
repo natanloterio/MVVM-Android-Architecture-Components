@@ -106,6 +106,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.2.0'
 
+    // paging
+    implementation "androidx.paging:paging-runtime:$paging_version"
     //recyclerview and cardview
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
