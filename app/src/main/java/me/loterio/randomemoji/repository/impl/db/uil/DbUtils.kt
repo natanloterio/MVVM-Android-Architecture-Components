@@ -1,6 +1,7 @@
 package me.loterio.randomemoji.repository.impl.db.uil
 
 import me.loterio.randomemoji.domain.model.Emoji
+import me.loterio.randomemoji.domain.model.GithubRepo
 import me.loterio.randomemoji.domain.model.GithubUser
 import me.loterio.randomemoji.repository.impl.db.model.EmojiDB
 import me.loterio.randomemoji.repository.impl.db.model.GithubUserDB

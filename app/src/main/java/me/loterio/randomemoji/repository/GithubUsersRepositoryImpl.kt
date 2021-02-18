@@ -1,9 +1,8 @@
 package me.loterio.randomemoji.repository
 
-import me.loterio.randomemoji.domain.model.Emoji
+import me.loterio.randomemoji.domain.model.GithubRepo
 import me.loterio.randomemoji.domain.model.GithubUser
 import me.loterio.randomemoji.repository.contracts.GithubUsersRepository
-import me.loterio.randomemoji.repository.impl.db.dao.EmojiDao
 import me.loterio.randomemoji.repository.impl.db.dao.GithubUsersDao
 import me.loterio.randomemoji.repository.impl.db.model.GithubUserDB
 import me.loterio.randomemoji.repository.impl.db.uil.userDomainToDb
@@ -30,11 +29,13 @@ class GithubUsersRepositoryImpl(
         return try {
             val cachedUser: GithubUserDB = githubUsersDao.findByName(username)
             if(cachedUser != null){
-                RepositoryResonse.Success(GithubUser(
+                RepositoryResonse.Success(
+                    GithubUser(
                         login = cachedUser.login,
                         id = cachedUser.id,
                         avatar_url = cachedUser.avatarUrl
-                ))
+                    )
+                )
             }else{
 
                 val user = apiService.searchGithubUser(username = username)
@@ -60,6 +61,19 @@ class GithubUsersRepositoryImpl(
         }
     }
 
+    override suspend fun getAllGoogleRepos(): RepositoryResonse<List<GithubRepo>> {
+        return try {
+                RepositoryResonse.Success(getReposRemotelly("google"))
+        }catch (e: Exception){
+            e.printStackTrace()
+            RepositoryResonse.Error(
+                exception = e,
+                message = "Error while retrieving data"
+            )
+        }
+    }
+
+    private suspend fun getReposRemotelly(username: String): List<GithubRepo>  =  apiService.getUserRepos(username = username,page = 1,size = 10)
 
 
 }

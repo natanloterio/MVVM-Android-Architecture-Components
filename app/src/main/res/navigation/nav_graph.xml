@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_fragmentMain_to_fragmentAvatarList"
             app:destination="@id/fragmentAvatarList" />
+        <action
+            android:id="@+id/action_fragmentMain_to_fragmentGoogleReposList"
+            app:destination="@id/fragmentGoogleReposList" />
     </fragment>
     <fragment
         android:id="@+id/fragmenEmojiList"
@@ -28,4 +31,8 @@
         android:id="@+id/fragmentAvatarList"
         android:name="me.loterio.randomemoji.presentation.avatarlist.FragmentAvatarList"
         android:label="FragmentAvatarList" />
+    <fragment
+        android:id="@+id/fragmentGoogleReposList"
+        android:name="me.loterio.randomemoji.presentation.googlerepos.FragmentGoogleReposList"
+        android:label="FragmentGoogleReposList" />
 </navigation>
