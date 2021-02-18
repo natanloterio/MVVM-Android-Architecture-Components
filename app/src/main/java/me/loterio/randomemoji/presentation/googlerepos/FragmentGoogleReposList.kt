@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collectLatest
 import me.loterio.randomemoji.EmojisApplication
 import me.loterio.randomemoji.R
@@ -47,12 +48,10 @@ class FragmentGoogleReposList: Fragment() {
         return binding.root
     }
 
+    @ExperimentalCoroutinesApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//
-//        viewModel.reposList.observe(viewLifecycleOwner, Observer {
-//            setAdapter(it)
-//        })
+
         adapter = GoogleReposListAdapter()
         binding.rvGoogleRepos.adapter = adapter
         binding.rvGoogleRepos.layoutManager = LinearLayoutManager(activity,  GridLayoutManager.VERTICAL, false)
@@ -64,18 +63,4 @@ class FragmentGoogleReposList: Fragment() {
         }
     }
 
-
-
-
-//    private fun setAdapter(githubRepos: List<GithubRepo>) {
-//        binding.rvGoogleRepos.apply {
-//            adapter =
-//                GoogleReposListAdapter(
-//                    context,
-//                    githubRepos
-//                )
-//            layoutManager = LinearLayoutManager(activity,  GridLayoutManager.VERTICAL, false)
-//            isNestedScrollingEnabled = false
-//        }
-//    }
 }

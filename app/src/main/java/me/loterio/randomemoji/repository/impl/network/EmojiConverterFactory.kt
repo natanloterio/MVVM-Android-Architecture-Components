@@ -5,7 +5,6 @@ import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement
 import me.loterio.randomemoji.domain.model.Emoji
-import java.lang.Exception
 import java.lang.reflect.Type
 
 class EmojiConverterFactory: JsonDeserializer<List<Emoji>> {

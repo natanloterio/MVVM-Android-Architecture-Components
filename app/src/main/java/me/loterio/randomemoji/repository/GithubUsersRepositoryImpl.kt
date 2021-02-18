@@ -33,21 +33,13 @@ class GithubUsersRepositoryImpl(
     override suspend fun searchGithubUser(username: String): RepositoryResonse<GithubUser> {
         return try {
             val cachedUser: GithubUserDB = githubUsersDao.findByName(username)
-            if(cachedUser != null){
-                RepositoryResonse.Success(
-                    GithubUser(
-                        login = cachedUser.login,
-                        id = cachedUser.id,
-                        avatar_url = cachedUser.avatarUrl
-                    )
+            RepositoryResonse.Success(
+                GithubUser(
+                    login = cachedUser.login,
+                    id = cachedUser.id,
+                    avatar_url = cachedUser.avatarUrl
                 )
-            }else{
-
-                val user = apiService.searchGithubUser(username = username)
-                githubUsersDao.insert(userDomainToDb(user))
-
-                RepositoryResonse.Success(user)
-            }
+            )
         }catch (e: Exception){
             e.printStackTrace()
             RepositoryResonse.Error(
