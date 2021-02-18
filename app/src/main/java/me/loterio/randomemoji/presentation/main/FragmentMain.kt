@@ -51,7 +51,7 @@ class FragmentMain: Fragment() {
 
         binding.btnAvatarList.setOnClickListener {
             val action =
-                FragmentMainDirections.actionFragmentMainToFragmentUnderConstruction()
+                FragmentMainDirections.actionFragmentMainToFragmentAvatarList()
             view.findNavController().navigate(action)
         }
 
